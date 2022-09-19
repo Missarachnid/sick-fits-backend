@@ -21,8 +21,11 @@ const databaseURL =
   process.env.DATABASE_URL ?? 'mongodb://localhost/keystone-sick-fits-tutorial';
 
 const sessionConfig = {
-  maxAge: 60 * 60 * 24 * 360,
+  maxAge: 60 * 60 * 24 * 60 * 360,
   secret: process.env.COOKIE_SECRET,
+  Secure: true,
+  httpOnly: true,
+  SameSite: 'None',
 };
 
 const { withAuth } = createAuth({
@@ -45,8 +48,9 @@ export default withAuth(
     // @ts-ignore
     server: {
       cors: {
-        origin: [process.env.FRONTEND_URL],
+        origin: true,
         credentials: true,
+        methods: process.env.CORS_METHODS,
       },
     },
     db: {
