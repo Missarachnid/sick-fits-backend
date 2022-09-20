@@ -18,16 +18,13 @@ const generatedPermissions = Object.fromEntries(
 // Permissions check if someone meets a criteria - yes or no.
 export const permissions = {
   ...generatedPermissions,
-  isAwesome({ session }: ListAccessArgs): boolean {
-    return session?.data.name.includes('wes');
-  },
 };
 
 // Rule based function
 // Rules can return a boolean - yes or no - or a filter which limits which products they can CRUD.
 export const rules = {
   canManageProducts({ session }: ListAccessArgs) {
-    console.log('canManageProducts');
+    // console.log('canManageProducts');
     if (!isSignedIn({ session })) {
       return false;
     }
@@ -39,7 +36,7 @@ export const rules = {
     return { user: { id: session.itemId } };
   },
   canOrder({ session }: ListAccessArgs) {
-    console.log('canOrder');
+    // console.log('canOrder');
     if (!isSignedIn({ session })) {
       return false;
     }
@@ -51,7 +48,7 @@ export const rules = {
     return { user: { id: session.itemId } };
   },
   canManageOrderItems({ session }: ListAccessArgs) {
-    console.log('canManageOrderItems');
+    // console.log('canManageOrderItems');
     if (!isSignedIn({ session })) {
       return false;
     }
@@ -70,16 +67,16 @@ export const rules = {
     return { OR: [{ user: { id: session.itemId } }, { status: 'AVAILABLE' }] };
   },
   canManageUsers({ session }: ListAccessArgs) {
-    console.log('canManageUsers');
+    // console.log('canManageUsers');
     if (!isSignedIn({ session })) {
       return false;
     }
     if (permissions.canManageUsers({ session })) {
-      console.log('in canManageUsers returning true');
+      // console.log('in canManageUsers returning true');
       return true;
     }
     // Otherwise they may only update themselves!
-    console.log('In canManageUsers returning', session.itemId);
+    // console.log('In canManageUsers returning', session.itemId);
     return { id: session.itemId };
   },
 };
