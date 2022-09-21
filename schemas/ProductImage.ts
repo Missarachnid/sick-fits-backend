@@ -1,9 +1,8 @@
-import { text, relationship } from '@keystone-next/fields';
-import { cloudinaryImage } from '@keystone-next/cloudinary';
-import { list } from '@keystone-next/keystone/schema';
-import { permissions } from './../access';
 import 'dotenv/config';
-import { isSignedIn } from '../access';
+import { relationship, text } from '@keystone-next/fields';
+import { list } from '@keystone-next/keystone/schema';
+import { cloudinaryImage } from '@keystone-next/cloudinary';
+import { isSignedIn, permissions } from '../access';
 
 export const cloudinary = {
   cloudName: process.env.CLOUDINARY_CLOUD_NAME,
