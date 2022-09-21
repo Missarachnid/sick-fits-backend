@@ -52,6 +52,7 @@
 
 - Adding items to cart without being signed in
 - Adding a hamburger menu for mobile
+- The backend keystone layout is not mobile friendly, it needs to be changed.
 
 #### Please keep in mind this is a tutorial project and the products are not real. There is a link to Stripe's website to get a testing card number above the checkout area. Please do not enter real numbers, this is not a real website.
 
